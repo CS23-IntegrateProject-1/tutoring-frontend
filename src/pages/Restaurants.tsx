@@ -1,7 +1,7 @@
-import { Box, Heading, useDisclosure, Text, VStack } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Box, Heading, useDisclosure } from "@chakra-ui/react";
 import { RestaurantDetailModal } from "./RestaurantDetailModal";
 import { FC, useState } from "react";
+import { SearchBar } from "./SearchBar";
 
 interface RestaurantProps {
   id: number;
@@ -13,16 +13,11 @@ interface RestaurantProps {
 
 export const Restaurants: FC = () => {
   const restaurantModal = useDisclosure();
-  const [selectedRestaurant, setSelectedRestaurant] = useState<RestaurantProps>(
-    {
-      id: 0,
-      name: "",
-      location: "",
-      numberOfEmployee: 0,
-      isAvailable: false,
-    },
-  );
-  // The mock data
+  const [searchFilter, setSearchFilter] = useState<string>("");
+  const [selectedRestaurant, setSelectedRestaurant] = useState<RestaurantProps | null>(
+    null
+  ); // Initialize as null
+
   const restaurants = [
     {
       id: 1,
@@ -46,32 +41,33 @@ export const Restaurants: FC = () => {
       isAvailable: true,
     },
   ];
+
   const handleOpenModal = (restaurant: RestaurantProps) => {
     setSelectedRestaurant(restaurant);
-    restaurantModal.onOpen();
+    restaurantModal.onOpen(); // You were missing the function call here
   };
 
   return (
-    <Box >
+    <Box>
       <Heading>Restaurant Page</Heading>
-      <VStack>
-        {restaurants.map((restaurant) => (
-          <Box
-            as="button"
-            width={"100%"}
-            // height={"100px"}
-                          onClick={() => handleOpenModal(restaurant)}
-
-            background={"pink"}
-          >
+      <SearchBar searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
+      <Box>
+        {restaurants
+          .filter((restaurant) => restaurant.name.toLowerCase().includes(searchFilter.toLowerCase()) )
+          .map((restaurant, index) => (
             <Box
-              background={"blue"}
-            ></Box>
-            <Heading>{restaurant.name}</Heading>
-          </Box>
-        ))}
-      </VStack>
-
+              width={"100%"}
+              height={"100px"}
+              background={"pink"}
+              key={restaurant.id}
+              borderRadius={"12px"}
+              mt={"10px"}
+              onClick={() => handleOpenModal(restaurant)}
+            >
+              <Heading>{index + 1}.{restaurant.name}</Heading>
+            </Box>
+          ))}
+      </Box>
       {selectedRestaurant && (
         <RestaurantDetailModal
           onOpen={restaurantModal.onOpen}
