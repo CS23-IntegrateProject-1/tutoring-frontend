@@ -35,7 +35,7 @@ export const RestaurantDetailModal: FC<RestaurantDetailModal> = (props) => {
       <ModalContent>
         {/* <ModalHeader>Modal Title</ModalHeader> */}
         <ModalCloseButton />
-        <ModalBody padding={"2em"} >
+        <ModalBody padding={"2em"}>
           <Heading>{props.name}</Heading>
           <Text>{props.location}</Text>
           <Text>{props.numberOfEmployee}</Text>

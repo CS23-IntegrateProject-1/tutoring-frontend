@@ -1,4 +1,4 @@
-import { Box, Heading, useDisclosure, Text } from "@chakra-ui/react";
+import { Box, Heading, useDisclosure, Text, VStack } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 import { RestaurantDetailModal } from "./RestaurantDetailModal";
 import { FC, useState } from "react";
@@ -48,25 +48,30 @@ export const Restaurants: FC = () => {
   ];
   const handleOpenModal = (restaurant: RestaurantProps) => {
     setSelectedRestaurant(restaurant);
-    restaurantModal.onOpen
+    restaurantModal.onOpen();
   };
 
   return (
-    <Box onClick={restaurantModal.onOpen}>
+    <Box >
       <Heading>Restaurant Page</Heading>
-      {restaurants.map((restaurant) => (
-        <Box>
+      <VStack>
+        {restaurants.map((restaurant) => (
           <Box
-            width={"100px"}
-            height={"100px"}
+            as="button"
+            width={"100%"}
+            // height={"100px"}
+                          onClick={() => handleOpenModal(restaurant)}
+
             background={"pink"}
-            onClick={()=>handleOpenModal(restaurant)}
           >
-            <Heading>{restaurant.id}</Heading>
+            <Box
+              background={"blue"}
+            ></Box>
+            <Heading>{restaurant.name}</Heading>
           </Box>
-         
-        </Box>
-      ))}
+        ))}
+      </VStack>
+
       {selectedRestaurant && (
         <RestaurantDetailModal
           onOpen={restaurantModal.onOpen}
