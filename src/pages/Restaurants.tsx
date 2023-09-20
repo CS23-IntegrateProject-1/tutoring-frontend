@@ -37,7 +37,7 @@ export const Restaurants: FC = () => {
       <Heading>Restaurant Page</Heading>
       <Outlet />
       {restaurants.map((restaurant) => (
-        <Box >
+        <Box>
           <Heading>{restaurant.name}</Heading>
           <Text>{restaurant.location}</Text>
         </Box>
