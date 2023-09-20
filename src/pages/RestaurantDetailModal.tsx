@@ -15,8 +15,8 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 
 interface ModalProps {
-  isOpen: boolean;
   onOpen: () => void;
+  isOpen: boolean;
   onClose: () => void;
 }
 
@@ -25,7 +25,7 @@ interface RestaurantDetailModal extends ModalProps {
   name: string;
   location: string;
   numberOfEmployee: number;
-  isOpen: boolean;
+  isAvailable: boolean;
 }
 
 export const RestaurantDetailModal: FC<RestaurantDetailModal> = (props) => {
@@ -33,21 +33,20 @@ export const RestaurantDetailModal: FC<RestaurantDetailModal> = (props) => {
     <Modal isOpen={props.isOpen} onClose={props.onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
+        {/* <ModalHeader>Modal Title</ModalHeader> */}
         <ModalCloseButton />
-        <ModalBody>
-          <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque,
-            ullam.
-          </Text>
+        <ModalBody padding={"2em"} >
+          <Heading>{props.name}</Heading>
+          <Text>{props.location}</Text>
+          <Text>{props.numberOfEmployee}</Text>
         </ModalBody>
 
-        <ModalFooter>
+        {/* <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={props.onClose}>
             Close
           </Button>
           <Button variant="ghost">Secondary Action</Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </ModalContent>
     </Modal>
   );
