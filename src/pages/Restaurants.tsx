@@ -1,7 +1,7 @@
-import { Box, Heading, useDisclosure, Text } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Box, Heading, useDisclosure } from "@chakra-ui/react";
 import { RestaurantDetailModal } from "./RestaurantDetailModal";
 import { FC, useState } from "react";
+import { SearchBar } from "./SearchBar";
 
 interface RestaurantProps {
   id: number;
@@ -13,16 +13,11 @@ interface RestaurantProps {
 
 export const Restaurants: FC = () => {
   const restaurantModal = useDisclosure();
-  const [selectedRestaurant, setSelectedRestaurant] = useState<RestaurantProps>(
-    {
-      id: 0,
-      name: "",
-      location: "",
-      numberOfEmployee: 0,
-      isAvailable: false,
-    },
-  );
-  // The mock data
+  const [searchFilter, setSearchFilter] = useState<string>("");
+  const [selectedRestaurant, setSelectedRestaurant] = useState<RestaurantProps | null>(
+    null
+  ); // Initialize as null
+
   const restaurants = [
     {
       id: 1,
@@ -46,27 +41,33 @@ export const Restaurants: FC = () => {
       isAvailable: true,
     },
   ];
+
   const handleOpenModal = (restaurant: RestaurantProps) => {
     setSelectedRestaurant(restaurant);
-    restaurantModal.onOpen
+    restaurantModal.onOpen(); // You were missing the function call here
   };
 
   return (
-    <Box onClick={restaurantModal.onOpen}>
+    <Box>
       <Heading>Restaurant Page</Heading>
-      {restaurants.map((restaurant) => (
-        <Box>
-          <Box
-            width={"100px"}
-            height={"100px"}
-            background={"pink"}
-            onClick={()=>handleOpenModal(restaurant)}
-          >
-            <Heading>{restaurant.id}</Heading>
-          </Box>
-         
-        </Box>
-      ))}
+      <SearchBar searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
+      <Box>
+        {restaurants
+          .filter((restaurant) => restaurant.name.toLowerCase().includes(searchFilter.toLowerCase()) )
+          .map((restaurant, index) => (
+            <Box
+              width={"100%"}
+              height={"100px"}
+              background={"pink"}
+              key={restaurant.id}
+              borderRadius={"12px"}
+              mt={"10px"}
+              onClick={() => handleOpenModal(restaurant)}
+            >
+              <Heading>{index + 1}.{restaurant.name}</Heading>
+            </Box>
+          ))}
+      </Box>
       {selectedRestaurant && (
         <RestaurantDetailModal
           onOpen={restaurantModal.onOpen}
