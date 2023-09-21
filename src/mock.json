@@ -8,36 +8,15 @@
   },
   {
     "id": 2,
-    "name": "Shinkanzen2",
+    "name": "Pizza Company",
     "location": "Bangkok2",
     "numberOfEmployee": 20,
     "isAvailable": true
   },
   {
-    "id": 3,
-    "name": "Shinkanzen3",
-    "location": "Bangkok3",
-    "numberOfEmployee": 30,
-    "isAvailable": true
-  },
-  {
-    "id": 3,
-    "name": "Shinkanzen3",
-    "location": "Bangkok3",
-    "numberOfEmployee": 30,
-    "isAvailable": true
-  },
-  {
-    "id": 3,
-    "name": "Shinkanzen3",
-    "location": "Bangkok3",
-    "numberOfEmployee": 30,
-    "isAvailable": true
-  },
-  {
-    "id": 3,
-    "name": "Shinkanzen3",
-    "location": "Bangkok3",
+    "id": 4,
+    "name": "Loong Nhoom",
+    "location": "Loong Nhoom Square",
     "numberOfEmployee": 30,
     "isAvailable": true
   }

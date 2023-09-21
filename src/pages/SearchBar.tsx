@@ -13,15 +13,14 @@ export const SearchBar: FC<SearchBarProps> = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newFilter = event.target.value;
     setSearchFilter(newFilter);
-    console.log(searchFilter);
   };
 
   return (
     <Input
+      w={{ base: "100%", sm: "50%", lg: "30%" }}
       placeholder="search here"
       value={searchFilter}
       onChange={handleInputChange}
-      width={{ base: "100%", sm: "300px" }}
     />
   );
 };

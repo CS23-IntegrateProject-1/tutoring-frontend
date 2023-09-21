@@ -1,4 +1,11 @@
-import { Box, Button, Heading, useDisclosure, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
 import { RestaurantDetailModal } from "./RestaurantDetailModal";
 import { FC, useState } from "react";
 import { SearchBar } from "./SearchBar";
@@ -40,7 +47,12 @@ export const Restaurants: FC = () => {
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
       />
-      <Box width={"100%"}>
+      <Flex
+        flexDir={"column"}
+        justify={"center"}
+        align={"center"}
+        width={"100%"}
+      >
         <VStack
           w={{ base: "100%", sm: "70%", lg: "50%" }}
           maxW={"550px"}
@@ -49,26 +61,27 @@ export const Restaurants: FC = () => {
         >
           {restaurants
             .filter((restaurant) =>
-              restaurant.name
-                .toLowerCase()
-                .includes(searchFilter.toLowerCase()),
+              restaurant.name.toLowerCase().includes(searchFilter.toLowerCase())
             )
             .map((restaurant, index) => (
-              <Box
+              <Flex
+                justify={"center"}
+                align={"center"}
                 width={"100%"}
                 height={"100px"}
                 background={"pink"}
                 borderRadius={"12px"}
                 key={restaurant.id}
+                cursor={"pointer"}
                 onClick={() => handleOpenModal(restaurant)}
               >
                 <Heading>
                   {index + 1}.{restaurant.name}
                 </Heading>
-              </Box>
+              </Flex>
             ))}
         </VStack>
-      </Box>
+      </Flex>
 
       <Button
         width={"250px"}
