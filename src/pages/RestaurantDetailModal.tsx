@@ -12,7 +12,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FC } from "react";
-import { useParams } from "react-router-dom";
 
 interface ModalProps {
   isOpen: boolean;
@@ -24,20 +23,24 @@ interface RestaurantDetailModal extends ModalProps {
   name: string;
   location: string;
   numberOfEmployee: number;
-  isAvailable: boolean;
 }
 
 export const RestaurantDetailModal: FC<RestaurantDetailModal> = (props) => {
   return (
-    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <Modal
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      size={{ base: "xs", sm: "md", md: "lg" }}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent>
         {/* <ModalHeader>Modal Title</ModalHeader> */}
         <ModalCloseButton />
         <ModalBody padding={"2em"}>
-          <Heading>{props.name}</Heading>
-          <Text>{props.location}</Text>
-          <Text>{props.numberOfEmployee}</Text>
+          <Heading mb="0.5em">{props.name}</Heading>
+          <Text>Location: {props.location}</Text>
+          <Text>Number of Employee: {props.numberOfEmployee}</Text>
         </ModalBody>
 
         {/* <ModalFooter>

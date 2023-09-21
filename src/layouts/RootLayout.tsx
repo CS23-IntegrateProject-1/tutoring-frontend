@@ -4,7 +4,7 @@ import { NavBar } from "../components/NavBar";
 
 export const RootLayout = () => {
   return (
-    <Box width={"100%"} height={"100vh"}>
+    <Box width={"100%"} height={"100vh"} background="primary.200">
       <NavBar />
       <Box
         // display={"flex"}

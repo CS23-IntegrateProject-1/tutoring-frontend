@@ -8,6 +8,8 @@ import {
   ModalFooter,
   Button,
   Input,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
 import { FC, useState } from "react";
 
@@ -21,7 +23,7 @@ interface RestaurantProps {
   name: string;
   location: string;
   numberOfEmployee: number;
-  isAvailable: boolean;
+  //   isAvailable: boolean;
 }
 
 export const AddModal: FC<ModalProps> = (props) => {
@@ -30,7 +32,7 @@ export const AddModal: FC<ModalProps> = (props) => {
     name: "",
     location: "",
     numberOfEmployee: 0,
-    isAvailable: false,
+    // isAvailable: false,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,30 +45,47 @@ export const AddModal: FC<ModalProps> = (props) => {
 
   const handleSave = () => {
     alert(
-      `Integration part\nrestaurant: ${newRestaurant.name}\nlocation: ${newRestaurant.location}`
+      `Integration part\nrestaurant: ${newRestaurant.name}\nlocation: ${newRestaurant.location}\nNumber of Employee: ${newRestaurant.numberOfEmployee}`,
     );
   };
   return (
-    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <Modal isOpen={props.isOpen} onClose={props.onClose} isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Add restaurant</ModalHeader>
+        <ModalHeader>Add Restaurant</ModalHeader>
         <ModalCloseButton />
-        <ModalBody padding={"1em"}>
-          <Input
-            name="name"
-            placeholder="Name"
-            mb={"1em"}
-            value={newRestaurant.name}
-            onChange={handleInputChange}
-          />
-          <Input
-            name="location"
-            placeholder="Location"
-            mb={"1em"}
-            value={newRestaurant.location}
-            onChange={handleInputChange}
-          />
+        <ModalBody>
+          <FormControl>
+            <FormLabel>Name</FormLabel>
+            <Input
+              name="name"
+              placeholder="Name"
+              mb={"1em"}
+              value={newRestaurant.name}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Location</FormLabel>
+            <Input
+              name="location"
+              placeholder="Location"
+              mb={"1em"}
+              value={newRestaurant.location}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Number of Employee</FormLabel>
+            <Input
+              name="numberOfEmployee"
+              placeholder="Number of Employee"
+              mb={"1em"}
+              type="number"
+              value={newRestaurant.numberOfEmployee}
+              onChange={handleInputChange}
+            />
+          </FormControl>
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="red" mr={3} onClick={props.onClose}>

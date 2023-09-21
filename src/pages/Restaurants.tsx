@@ -17,7 +17,6 @@ interface RestaurantProps {
   name: string;
   location: string;
   numberOfEmployee: number;
-  isAvailable: boolean;
 }
 
 export const Restaurants: FC = () => {
@@ -40,8 +39,8 @@ export const Restaurants: FC = () => {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Heading m="0.5em" textAlign={"center"}>
-        Restaurant Page
+      <Heading m="0.5em" textAlign={"center"} color={"primary.500"}>
+        Restaurant List
       </Heading>
       <SearchBar
         searchFilter={searchFilter}
@@ -49,19 +48,22 @@ export const Restaurants: FC = () => {
       />
       <Flex
         flexDir={"column"}
-        justify={"center"}
         align={"center"}
-        width={"100%"}
+        overflowY="auto"
+        maxHeight="55vh"
+        my={"1em"}
+        width={{ base: "100%", sm: "70%", lg: "50%" }}
       >
         <VStack
-          w={{ base: "100%", sm: "70%", lg: "50%" }}
           maxW={"550px"}
-          my="1em"
-          overflow={"hidden"}
+          spacing={"0.5em"}
+          width={{ base: "100%", sm: "80%" }}
         >
           {restaurants
             .filter((restaurant) =>
-              restaurant.name.toLowerCase().includes(searchFilter.toLowerCase())
+              restaurant.name
+                .toLowerCase()
+                .includes(searchFilter.toLowerCase()),
             )
             .map((restaurant, index) => (
               <Flex
@@ -69,13 +71,14 @@ export const Restaurants: FC = () => {
                 align={"center"}
                 width={"100%"}
                 height={"100px"}
-                background={"pink"}
                 borderRadius={"12px"}
+                padding={"2em"}
+                background={"primary.100"}
                 key={restaurant.id}
                 cursor={"pointer"}
                 onClick={() => handleOpenModal(restaurant)}
               >
-                <Heading>
+                <Heading size={"lg"}>
                   {index + 1}.{restaurant.name}
                 </Heading>
               </Flex>
@@ -84,12 +87,15 @@ export const Restaurants: FC = () => {
       </Flex>
 
       <Button
-        width={"250px"}
+        w={{ base: "70%", sm: "40%", lg: "30%" }}
         height={"50px"}
         m={"auto"}
+        background={"primary.400"}
+        color={"primary.100"}
+        _hover={{ background: "primary.500" }}
         onClick={addModal.onOpen}
       >
-        Add
+        Add Restaurant
       </Button>
 
       {selectedRestaurant && (
@@ -100,7 +106,6 @@ export const Restaurants: FC = () => {
           name={selectedRestaurant.name}
           location={selectedRestaurant.location}
           numberOfEmployee={selectedRestaurant.numberOfEmployee}
-          isAvailable={selectedRestaurant.isAvailable}
         />
       )}
 

@@ -1,4 +1,4 @@
-import { Box, FlexProps, HStack } from "@chakra-ui/react";
+import { Box, FlexProps, HStack, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 const navProps: FlexProps = {
@@ -8,14 +8,15 @@ const navProps: FlexProps = {
   alignItems: "center",
   width: "100%",
   height: "50px",
-  background: "blue.400",
   padding: "0 1em",
+  background: "primary.500",
+  color: "primary.100",
 };
 
 export const NavBar = () => {
   return (
     <Box {...navProps}>
-      <h1>Tutoring Web</h1>
+      <Text>Logo</Text>
       <HStack spacing={"2em"}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/restaurants">Restaurant</NavLink>
