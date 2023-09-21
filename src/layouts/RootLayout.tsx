@@ -7,10 +7,11 @@ export const RootLayout = () => {
     <Box width={"100%"} height={"100vh"}>
       <NavBar />
       <Box
-        display={"flex"}
+        // display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
-        padding={"3em"}
+        padding={{ base: "1em", md: "3em" }}
+        height={"calc(100vh - 50px)"}
       >
         <Outlet />
       </Box>

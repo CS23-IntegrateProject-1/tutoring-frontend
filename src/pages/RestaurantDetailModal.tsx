@@ -15,7 +15,6 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 
 interface ModalProps {
-  onOpen: () => void;
   isOpen: boolean;
   onClose: () => void;
 }

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Shinkanzen",
+    "location": "Bangkok",
+    "numberOfEmployee": 10,
+    "isAvailable": true
+  },
+  {
+    "id": 2,
+    "name": "Shinkanzen2",
+    "location": "Bangkok2",
+    "numberOfEmployee": 20,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Shinkanzen3",
+    "location": "Bangkok3",
+    "numberOfEmployee": 30,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Shinkanzen3",
+    "location": "Bangkok3",
+    "numberOfEmployee": 30,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Shinkanzen3",
+    "location": "Bangkok3",
+    "numberOfEmployee": 30,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Shinkanzen3",
+    "location": "Bangkok3",
+    "numberOfEmployee": 30,
+    "isAvailable": true
+  }
+]
