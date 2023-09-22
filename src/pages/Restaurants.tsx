@@ -20,18 +20,7 @@ interface RestaurantProps {
 }
 
 export const Restaurants: FC = () => {
-  const restaurantModal = useDisclosure();
-  const addModal = useDisclosure();
-  const [searchFilter, setSearchFilter] = useState<string>("");
-  const [selectedRestaurant, setSelectedRestaurant] =
-    useState<RestaurantProps | null>(null);
-  const restaurants: RestaurantProps[] = mock;
-
-  const handleOpenModal = (restaurant: RestaurantProps) => {
-    setSelectedRestaurant(restaurant);
-    restaurantModal.onOpen();
-  };
-
+  
   return (
     <Box
       display={"flex"}
@@ -42,10 +31,10 @@ export const Restaurants: FC = () => {
       <Heading m="0.5em" textAlign={"center"} color={"primary.500"}>
         Restaurant List
       </Heading>
-      <SearchBar
+      {/* <SearchBar
         searchFilter={searchFilter}
         setSearchFilter={setSearchFilter}
-      />
+      /> */}
       <Flex
         flexDir={"column"}
         align={"center"}
@@ -59,57 +48,30 @@ export const Restaurants: FC = () => {
           spacing={"0.5em"}
           width={{ base: "100%", sm: "80%" }}
         >
-          {restaurants
-            .filter((restaurant) =>
-              restaurant.name
-                .toLowerCase()
-                .includes(searchFilter.toLowerCase()),
-            )
-            .map((restaurant, index) => (
-              <Flex
-                justify={"center"}
-                align={"center"}
-                width={"100%"}
-                height={"100px"}
-                borderRadius={"12px"}
-                padding={"2em"}
-                background={"primary.100"}
-                key={restaurant.id}
-                cursor={"pointer"}
-                onClick={() => handleOpenModal(restaurant)}
-              >
-                <Heading size={"lg"}>
-                  {index + 1}.{restaurant.name}
-                </Heading>
-              </Flex>
-            ))}
+          {/* 
+            Map restaurant components here
+          */}
         </VStack>
       </Flex>
 
-      <Button
-        w={{ base: "70%", sm: "40%", lg: "30%" }}
-        height={"50px"}
-        m={"auto"}
-        background={"primary.400"}
-        color={"primary.100"}
-        _hover={{ background: "primary.500" }}
-        onClick={addModal.onOpen}
-      >
-        Add Restaurant
-      </Button>
+      {
+        /*
+          create add Button here
+        */
+      }
+      {
+        /*
+          call a <RestaurantDetailModal/> component here
+          and pass the props
 
-      {selectedRestaurant && (
-        <RestaurantDetailModal
-          isOpen={restaurantModal.isOpen}
-          onClose={restaurantModal.onClose}
-          id={selectedRestaurant.id}
-          name={selectedRestaurant.name}
-          location={selectedRestaurant.location}
-          numberOfEmployee={selectedRestaurant.numberOfEmployee}
-        />
-      )}
+        */
+      }
+      {
+        /*
+          call a <AddModal/> component here
 
-      <AddModal isOpen={addModal.isOpen} onClose={addModal.onClose} />
+        */
+      }
     </Box>
   );
 };

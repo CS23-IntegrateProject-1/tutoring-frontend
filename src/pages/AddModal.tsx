@@ -23,7 +23,6 @@ interface RestaurantProps {
   name: string;
   location: string;
   numberOfEmployee: number;
-  //   isAvailable: boolean;
 }
 
 export const AddModal: FC<ModalProps> = (props) => {
@@ -32,7 +31,6 @@ export const AddModal: FC<ModalProps> = (props) => {
     name: "",
     location: "",
     numberOfEmployee: 0,
-    // isAvailable: false,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

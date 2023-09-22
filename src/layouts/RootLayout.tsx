@@ -7,7 +7,6 @@ export const RootLayout = () => {
     <Box width={"100%"} height={"100vh"} background="primary.200">
       <NavBar />
       <Box
-        // display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
         padding={{ base: "1em", md: "3em" }}

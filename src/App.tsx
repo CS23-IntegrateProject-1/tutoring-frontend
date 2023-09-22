@@ -15,8 +15,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="restaurants" element={<Restaurants />} />
       
-    </Route>,
-  ),
+    </Route>
+  )
 );
 
 function App() {
