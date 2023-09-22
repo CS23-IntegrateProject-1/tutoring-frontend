@@ -1,6 +1,4 @@
 # Logs
-node_modules
-.env #เก็บไฟล์ไว้ ไว้เก็บรหัส
 logs
 *.log
 npm-debug.log*
