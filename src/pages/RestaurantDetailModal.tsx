@@ -7,7 +7,9 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalContent,
+  ModalFooter,
   Text,
+  Button,
 } from "@chakra-ui/react";
 import { FC } from "react";
 
